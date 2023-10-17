@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 p-4">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,7 +49,7 @@ const NavBar = () => {
             </ul>
           </div>
           <NavLink to="/" className="btn btn-ghost normal-case text-xl">
-            <p>
+            <p className="text-2xl">
               {" "}
               <span className="text-red-600">Fashion</span>Age
             </p>

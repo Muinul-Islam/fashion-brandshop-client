@@ -20,6 +20,7 @@ const AddProduct = () => {
       <h1 className="text-2xl md:text-4xl text-black font-bold ">
         Add A Product Here
       </h1>
+
       <form onSubmit={handleAddProduct}>
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">

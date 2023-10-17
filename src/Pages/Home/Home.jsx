@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <div>
       {/* banner section */}
-      <div className="carousel w-full">
+      <div className="carousel h-70vh w-full">
         <div id="slide1" className="carousel-item relative w-full">
           <img
-            src="/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
+            src="
+            https://images.unsplash.com/photo-1509983165097-0c31a863e3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmlrZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
             className="w-full"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -19,7 +22,7 @@ const Home = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src="/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
+            src="https://img.freepik.com/premium-vector/spring-fashion-sale-banner-design-template_2239-1180.jpg "
             className="w-full"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -33,7 +36,7 @@ const Home = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src="/images/stock/photo-1414694762283-acccc27bca85.jpg"
+            src="https://image.isu.pub/150119004707-dda6a9316bd1d2bcbe115a622e86ab11/jpg/page_1.jpg"
             className="w-full"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -47,7 +50,7 @@ const Home = () => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src="/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
+            src="https://21run.com/blog/app/uploads//2019/11/ultraboost20-banner-1024x442-1.jpg"
             className="w-full"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -59,6 +62,22 @@ const Home = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* brands */}
+      <div className="grid grid-cols-1 md:grid-cols-2 my-10 w-11/12 mx-auto">
+        <Link to="" className="card w-3/4 mx-auto bg-base-100 shadow-xl mb-8">
+          <figure>
+            <img
+              className="w-full h-80"
+              src="https://c.static-nike.com/a/images/w_1920,c_limit/bzl2wmsfh7kgdkufrrjq/image.jpg"
+              alt="Shoes"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="text-3xl text-center">Nike</h2>
+          </div>
+        </Link>
       </div>
     </div>
   );
