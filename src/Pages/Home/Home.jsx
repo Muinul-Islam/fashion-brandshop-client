@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const [cardData, setCardData] = useState([]);
+
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => setCardData(data));
+  }, []);
+
+  const product = useLoaderData();
+  console.log(product);
+
   return (
     <div>
       {/* banner section */}
@@ -63,21 +75,22 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* brands */}
       <div className="grid grid-cols-1 md:grid-cols-2 my-10 w-11/12 mx-auto">
-        <Link to="" className="card w-3/4 mx-auto bg-base-100 shadow-xl mb-8">
-          <figure>
-            <img
-              className="w-full h-80"
-              src="https://c.static-nike.com/a/images/w_1920,c_limit/bzl2wmsfh7kgdkufrrjq/image.jpg"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="text-3xl text-center">Nike</h2>
-          </div>
-        </Link>
+        {/* brands */}
+        {cardData.map((card) => (
+          <Link
+            key={card.id}
+            to=""
+            className="card w-3/4 mx-auto bg-base-100 shadow-xl mb-8"
+          >
+            <figure>
+              <img className="w-full h-80" src={card.image} alt="Shoes" />
+            </figure>
+            <div className="card-body">
+              <h2 className="text-3xl text-center">{card.name}</h2>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

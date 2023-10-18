@@ -1,3 +1,5 @@
+import swal from "sweetalert";
+
 const AddProduct = () => {
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -7,12 +9,29 @@ const AddProduct = () => {
     const type = form.type.value;
     const price = form.price.value;
     const description = form.description.value;
+    const brand = form.brand.value;
     const photo = form.photo.value;
 
-    const addData = { name, type, price, description, photo };
+    const addData = { name, type, price, description, brand, photo };
 
     console.log(addData);
-    form.reset();
+
+    fetch("http://localhost:5000/product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          swal("Good job!", "Product Added Successfully", "success");
+        }
+      });
+
+    // form.reset();
   };
 
   return (
@@ -38,6 +57,7 @@ const AddProduct = () => {
               />
             </label>
           </div>
+
           <div className="form-control md:w-1/2 ml-4">
             <label className="label">
               <span className="label-text text-black text-xl">
@@ -86,8 +106,22 @@ const AddProduct = () => {
           </div>
         </div>
 
-        <div className="mb-8">
-          <div className="form-control w-full">
+        <div className="md:flex mb-8">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-black text-xl">Brand Name</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="brand"
+                placeholder="Brand Name"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+
+          <div className="form-control w-3/4 mx-auto">
             <label className="label">
               <span className="label-text text-xl text-black">Photo URL</span>
             </label>
@@ -104,7 +138,7 @@ const AddProduct = () => {
         <input
           type="submit"
           value="Add Product"
-          className="btn btn-block mb-8"
+          className="btn btn-block mb-8 bg-red-600 text-white"
         />
       </form>
     </div>
