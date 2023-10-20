@@ -10,9 +10,10 @@ const AddProduct = () => {
     const price = form.price.value;
     const description = form.description.value;
     const brand = form.brand.value;
+    const ratings = form.ratings.value;
     const photo = form.photo.value;
 
-    const addData = { name, type, price, description, brand, photo };
+    const addData = { name, type, price, description, brand, ratings, photo };
 
     console.log(addData);
 
@@ -35,7 +36,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="bg-gray-300 m-10 rounded-xl md:p-24">
+    <div className="bg-gray-300 m-10 rounded-xl p-4 md:p-24">
       <h1 className="text-2xl md:text-4xl text-black font-bold ">
         Add A Product Here
       </h1>
@@ -134,6 +135,19 @@ const AddProduct = () => {
               />
             </label>
           </div>
+        </div>
+        <div className="form-control w-1/2 mx-auto mb-4">
+          <label className="label">
+            <span className="label-text text-black text-xl">Ratings</span>
+          </label>
+          <label className="input-group">
+            <input
+              type="text"
+              name="ratings"
+              placeholder="Ratings"
+              className="input input-bordered w-full"
+            />
+          </label>
         </div>
         <input
           type="submit"
