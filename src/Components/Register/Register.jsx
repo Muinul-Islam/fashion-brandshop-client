@@ -1,42 +1,52 @@
 /* eslint-disable no-unused-vars */
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { BsGoogle } from "react-icons/bs";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase.config";
 import { useState } from "react";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [error, setError] = useState("");
+const Register = () => {
+  const [regError, setRegError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(name, email, password);
 
-    setError("");
-    form.reset();
-
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         setSuccess(result.user);
-        swal("Good job!", "Successfully Logged In", "success");
+        swal("Good job!", "Successfully Registered", "success");
       })
       .catch((error) => {
-        setError(error.message);
+        setRegError(error);
       });
   };
   return (
     <div>
-      <div className="hero min-h-screen bg-gray-200">
-        <div className="hero-content flex-col">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl text-black font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Register Here!</h1>
           </div>
-          <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin} className="card-body">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 my-10">
+            <form onSubmit={handleRegister} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -69,17 +79,13 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <button className="btn mt-4 bg-blue-600 text-white">
-                Login With
-                <BsGoogle></BsGoogle>
-              </button>
 
-              <p className="text-center text-red-600 ">
-                New Here? <Link to="/register">Register Now!</Link>
+              <p className="text-center text-green-500">
+                Already Have An Account? <Link to="/login">Login</Link>
               </p>
-            </form>
 
-            <div className="p-4 text-red-600">{error && <p>{error}</p>}</div>
+              {regError && <p className="text-red-500">{regError.message}</p>}
+            </form>
           </div>
         </div>
       </div>
@@ -87,4 +93,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

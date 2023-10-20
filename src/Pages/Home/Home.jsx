@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/no-unknown-property */
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
@@ -250,6 +251,43 @@ const Home = () => {
                 <span className="sr-only">Next</span>
               </span>
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* accordians */}
+      <h2 className="text-center text-3xl">User Reviews</h2>
+      <div className="my-10 mx-8">
+        <div className="collapse collapse-arrow bg-base-200">
+          <input type="radio" name="my-accordion-2" checked="checked" />
+          <div className="collapse-title text-xl font-medium">Sarah Smith </div>
+          <div className="collapse-content">
+            <p>
+              I had a great experience with the product. It's user-friendly and
+              high quality. I highly recommend it.
+            </p>
+          </div>
+        </div>
+        <div className="collapse collapse-arrow bg-base-200">
+          <input type="radio" name="my-accordion-2" />
+          <div className="collapse-title text-xl font-medium">John Doe </div>
+          <div className="collapse-content">
+            <p>
+              This product exceeded my expectations. It's a fantastic value for
+              the price. I'm very satisfied with my purchase.
+            </p>
+          </div>
+        </div>
+        <div className="collapse collapse-arrow bg-base-200">
+          <input type="radio" name="my-accordion-2" />
+          <div className="collapse-title text-xl font-medium">
+            Emily Johnson{" "}
+          </div>
+          <div className="collapse-content">
+            <p>
+              I was disappointed with the product. It didn't meet my
+              expectations, and I encountered some issues with it.
+            </p>
           </div>
         </div>
       </div>
